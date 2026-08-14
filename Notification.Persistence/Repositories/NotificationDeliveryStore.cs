@@ -169,7 +169,7 @@ public sealed class NotificationDeliveryRepository
     public async Task<NotificationDelivery?>
         GetForAcknowledgementAsync(
             Guid deliveryId,
-            string applicationId,
+            Guid applicationId,
             string recipientId,
             string connectionId
             )
@@ -260,7 +260,7 @@ public sealed class NotificationDeliveryRepository
 
     public async Task<IReadOnlyList<NotificationDelivery>>
     GetPendingForRecipientAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId
         )
     {

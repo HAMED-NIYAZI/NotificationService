@@ -11,7 +11,7 @@ public class ClientConnection
 
     public ClientConnection(
         Guid id,
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId)
     {
@@ -19,7 +19,7 @@ public class ClientConnection
             throw new NotificationDomainException(
                 "Connection id cannot be empty.");
 
-        if (string.IsNullOrEmpty( applicationId))
+        if ( applicationId==Guid.Empty)
             throw new NotificationDomainException(
                 "Application id cannot be empty.");
 
@@ -42,7 +42,7 @@ public class ClientConnection
 
     public Guid Id { get; set; }
 
-    public string ApplicationId { get; private set; }
+    public Guid ApplicationId { get; private set; }
 
     public string RecipientId { get; private set; } = null!;
 
@@ -60,7 +60,7 @@ public class ClientConnection
         = new List<NotificationDelivery>();
 
     public static ClientConnection Create(
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId)
     {

@@ -37,7 +37,7 @@ public sealed class ClientConnectionRepository
 
     public async Task<IReadOnlyList<ClientConnection>>
         GetActiveAsync(
-            string applicationId,
+            Guid applicationId,
             string recipientId
             )
     {

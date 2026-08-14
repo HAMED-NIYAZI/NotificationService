@@ -18,7 +18,7 @@ public sealed class ApplicationRepository
 
     public async Task<NotificationApplication?>
         GetByApiKeyAsync(
-            string apiKey
+            Guid? apiKey
             )
     {
         return await _dbContext.NotificationApplications

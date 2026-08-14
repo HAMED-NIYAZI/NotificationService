@@ -17,7 +17,7 @@ public sealed class DeliveryAcknowledgementService
 
     public async Task AcknowledgeDeliveredAsync(
         Guid deliveryId,
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         )
@@ -42,7 +42,7 @@ public sealed class DeliveryAcknowledgementService
 
     public async Task MarkAsReadAsync(
         Guid deliveryId,
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         )

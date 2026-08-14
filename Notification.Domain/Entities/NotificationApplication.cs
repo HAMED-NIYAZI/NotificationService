@@ -12,7 +12,7 @@ public sealed class NotificationApplication
     private NotificationApplication(
         Guid id,
         string name,
-        string apiKey)
+        Guid apiKey)
     {
         if (id == Guid.Empty)
             throw new NotificationDomainException(
@@ -22,7 +22,7 @@ public sealed class NotificationApplication
             throw new NotificationDomainException(
                 "Application name is required.");
 
-        if (string.IsNullOrWhiteSpace(apiKey))
+        if (apiKey==Guid.Empty)
             throw new NotificationDomainException(
                 "Api key hash is required.");
 
@@ -37,7 +37,7 @@ public sealed class NotificationApplication
 
     public string Name { get; private set; } = null!;
 
-    public string ApiKey { get; private set; } = null!;
+    public Guid ApiKey { get; private set; } = Guid.Empty!;
 
     public bool IsActive { get; private set; }
 
@@ -53,7 +53,7 @@ public sealed class NotificationApplication
 
     public static NotificationApplication Create(
         string name,
-        string ApiKey)
+        Guid ApiKey)
     {
         return new NotificationApplication(
             Guid.NewGuid(),

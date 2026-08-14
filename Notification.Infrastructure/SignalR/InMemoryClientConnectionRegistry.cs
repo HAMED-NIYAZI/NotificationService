@@ -13,7 +13,7 @@ public   class InMemoryClientConnectionRegistry
         ClientConnectionInfo> _connections = new();
 
     public Task RegisterAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         )
@@ -43,7 +43,7 @@ public   class InMemoryClientConnectionRegistry
 
     public Task<IReadOnlyList<string>>
         GetConnectionsAsync(
-            string applicationId,
+            Guid applicationId,
             string recipientId
             )
     {
@@ -61,7 +61,7 @@ public   class InMemoryClientConnectionRegistry
     }
 
     public Task<bool> IsOnlineAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId
         )
     {
@@ -74,7 +74,7 @@ public   class InMemoryClientConnectionRegistry
     }
  
 
-    public Task<IReadOnlyList<ClientConnection>> GetActiveConnectionsAsync(string applicationId, string recipientId)
+    public Task<IReadOnlyList<ClientConnection>> GetActiveConnectionsAsync(Guid applicationId, string recipientId)
     {
         throw new NotImplementedException();
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Notification.Application.Abstractions.Channels;
 using Notification.Application.Abstractions.Persistence;
 using Notification.Application.Abstractions.Queue;
 using Notification.Application.Abstractions.Transaction;
@@ -22,6 +23,7 @@ namespace Notification.Persistence
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<INotificationDeliveryRepository, NotificationDeliveryRepository>();
             services.AddScoped<INotificationQueue, SqlNotificationQueue>();
+
         }
     }
 }

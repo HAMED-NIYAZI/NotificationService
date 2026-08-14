@@ -3,7 +3,7 @@
 public interface IOfflineNotificationService
 {
     Task SyncAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         Guid connectionId
         );

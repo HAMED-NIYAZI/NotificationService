@@ -8,7 +8,7 @@ namespace Notification.Application.Abstractions.Channels;
 public interface IClientConnectionRegistry
 {
     Task RegisterAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         );
@@ -19,12 +19,12 @@ public interface IClientConnectionRegistry
 
     Task<IReadOnlyList<ClientConnection>>
          GetActiveConnectionsAsync(
-             string applicationId,
+             Guid applicationId,
              string recipientId
              );
 
     Task<bool> IsOnlineAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId
         );
 }

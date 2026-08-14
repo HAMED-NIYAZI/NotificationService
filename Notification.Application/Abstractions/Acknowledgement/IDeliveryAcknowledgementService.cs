@@ -4,14 +4,14 @@ public interface IDeliveryAcknowledgementService
 {
     Task AcknowledgeDeliveredAsync(
         Guid deliveryId,
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         );
 
     Task MarkAsReadAsync(
         Guid deliveryId,
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         );

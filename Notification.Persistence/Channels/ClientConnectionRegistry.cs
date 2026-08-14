@@ -17,7 +17,7 @@ public sealed class ClientConnectionRegistry
     }
 
     public async Task<ClientConnection> RegisterAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         )
@@ -72,7 +72,7 @@ public sealed class ClientConnectionRegistry
 
     public Task<IReadOnlyList<ClientConnection>>
         GetActiveConnectionsAsync(
-            string applicationId,
+            Guid applicationId,
             string recipientId
             )
     {
@@ -84,12 +84,12 @@ public sealed class ClientConnectionRegistry
  
  
 
-    public Task<bool> IsOnlineAsync(string applicationId, string recipientId)
+    public Task<bool> IsOnlineAsync(Guid applicationId, string recipientId)
     {
         throw new NotImplementedException();
     }
 
-    Task IClientConnectionRegistry.RegisterAsync(string applicationId, string recipientId, string connectionId)
+    Task IClientConnectionRegistry.RegisterAsync(Guid applicationId, string recipientId, string connectionId)
     {
         return RegisterAsync(applicationId, recipientId, connectionId);
     }

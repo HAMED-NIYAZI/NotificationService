@@ -27,24 +27,19 @@ public sealed class ApiKeyAuthenticationHandler
         HandleAuthenticateAsync()
     {
 
-       var apiKey = GetApiKey();
+        var apiKey = GetApiKey();
 
-        if (string.IsNullOrWhiteSpace(apiKey))
+        if (apiKey==Guid.Empty)
         {
             return AuthenticateResult.NoResult();
         }
 
-
-        if (string.IsNullOrWhiteSpace(apiKey))
-        {
-            return AuthenticateResult.Fail(
-                "API Key is required.");
-        }
+ 
 
         var application =
             await _applicationRepository
                 .GetByApiKeyAsync(
-                    apiKey!);
+                    apiKey);
 
         if (application is null)
         {
@@ -87,13 +82,14 @@ public sealed class ApiKeyAuthenticationHandler
 
 
 
-    private string? GetApiKey()
+    private Guid? GetApiKey()
     {
+        string ApiKey = string.Empty;
         if (Request.Headers.TryGetValue(
                 "X-Api-Key",
                 out var apiKey))
         {
-            return apiKey.FirstOrDefault();
+            ApiKey = apiKey;
         }
 
         var authorization =
@@ -105,10 +101,10 @@ public sealed class ApiKeyAuthenticationHandler
                 "Bearer ",
                 StringComparison.OrdinalIgnoreCase))
         {
-            return authorization["Bearer ".Length..]
-                .Trim();
+            ApiKey = authorization["Bearer ".Length..].Trim();
         }
 
-        return null;
+          Guid.TryParse(ApiKey ,out var result);
+        return result;
     }
 }

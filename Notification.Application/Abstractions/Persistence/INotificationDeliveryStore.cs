@@ -26,7 +26,7 @@ public interface INotificationDeliveryRepository
 
     Task<NotificationDelivery?> GetForAcknowledgementAsync(
         Guid deliveryId,
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         );
@@ -41,7 +41,7 @@ public interface INotificationDeliveryRepository
 
     Task<IReadOnlyList<NotificationDelivery>>
     GetPendingForRecipientAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId
         );
 

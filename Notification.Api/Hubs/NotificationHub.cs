@@ -20,7 +20,7 @@ public sealed class NotificationHub : Hub
     {
         var httpContext = Context.GetHttpContext();
 
-        string applicationId =
+        string strapplicationId =
             httpContext?
                 .Request
                 .Query["applicationId"]
@@ -31,8 +31,9 @@ public sealed class NotificationHub : Hub
                 .Request
                 .Query["recipientId"]
                 .FirstOrDefault();
+        Guid.TryParse(strapplicationId, out var applicationId);
 
-        if (string.IsNullOrEmpty(applicationId))
+        if (applicationId == Guid.Empty)
         {
             throw new HubException(
                 "applicationId is required.");
@@ -94,7 +95,7 @@ public sealed class NotificationHub : Hub
     {
         var httpContext = Context.GetHttpContext();
 
-        string applicationId =
+        string strapplicationId =
             httpContext?
                 .Request
                 .Query["applicationId"]
@@ -105,8 +106,9 @@ public sealed class NotificationHub : Hub
                 .Request
                 .Query["recipientId"]
                 .FirstOrDefault();
+        Guid.TryParse(strapplicationId , out var applicationId);
 
-        if (!string.IsNullOrEmpty(applicationId))
+        if (applicationId==Guid.Empty)
         {
             throw new HubException(
                 "applicationId is required.");
@@ -125,7 +127,7 @@ public sealed class NotificationHub : Hub
     }
 
     private sealed record ClientContext(
-        string ApplicationId,
+        Guid ApplicationId,
         string RecipientId,
         string ConnectionId);
 }

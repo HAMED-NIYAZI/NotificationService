@@ -14,7 +14,7 @@ public interface IClientConnectionRepository
 
     Task<IReadOnlyList<ClientConnection>>
         GetActiveAsync(
-            string applicationId,
+            Guid applicationId,
             string recipientId
             );
 

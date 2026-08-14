@@ -18,7 +18,7 @@ public sealed class OfflineNotificationService
     }
 
     public async Task SyncAsync(
-        string applicationId,
+        Guid applicationId,
         string recipientId,
         string connectionId
         )
@@ -48,7 +48,7 @@ public sealed class OfflineNotificationService
         }
     }
 
-    public Task SyncAsync(string applicationId, string recipientId, Guid connectionId)
+    public Task SyncAsync(Guid applicationId, string recipientId, Guid connectionId)
     {
         throw new NotImplementedException();
     }
