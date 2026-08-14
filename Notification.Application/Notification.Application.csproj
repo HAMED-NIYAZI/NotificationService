@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\Deliveries\ProcessNotificationDelivery\**" />
+    <EmbeddedResource Remove="Features\Deliveries\ProcessNotificationDelivery\**" />
+    <None Remove="Features\Deliveries\ProcessNotificationDelivery\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\SignalR\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Interfaces\" />
+    <Folder Include="Common\Behaviors\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Notification.Domain\Notification.Domain.csproj" />
+    <ProjectReference Include="..\Notification.Shared\Notification.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
