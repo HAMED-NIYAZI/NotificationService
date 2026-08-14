@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Notification.Persistence\Notification.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Doc\" />
+  </ItemGroup>
+
 </Project>
